@@ -3,64 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Tặng Người Tuyệt Vời Nhất ✨</title>
+    <title>Quà 20/10 Đặc Biệt 🌸</title>
     <style>
-        body { margin: 0; padding: 0; background: linear-gradient(135deg, #ffe5ec 0%, #ffb3c6 50%, #ff85a2 100%); height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; user-select: none; position: relative; }
-        .sparkle { position: absolute; background: white; border-radius: 50%; animation: twinkle 2s infinite ease-in-out; pointer-events: none; }
-        .gift-box-wrapper { text-align: center; cursor: pointer; z-index: 10; animation: float 2s infinite ease-in-out; }
-        .gift-box { font-size: 110px; filter: drop-shadow(0 10px 15px rgba(255, 71, 87, 0.4)); transition: transform 0.3s; }
-        .gift-box-wrapper:hover .gift-box { transform: scale(1.15) rotate(5deg); }
-        .click-text { color: #fff; font-weight: bold; font-size: 18px; text-shadow: 0 2px 5px rgba(0,0,0,0.2); background: rgba(255, 75, 110, 0.6); padding: 8px 18px; border-radius: 20px; margin-top: 15px; display: inline-block; }
-        .envelope { display: none; background: linear-gradient(145deg, #ffffff, #fff0f3); padding: 35px 25px; border-radius: 25px; border: 3px solid #ffd700; box-shadow: 0 20px 40px rgba(255, 75, 110, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.2); text-align: center; max-width: 350px; width: 80%; animation: openCard 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; z-index: 10; }
-        h1 { background: linear-gradient(to right, #ff416c, #ff4b2b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; margin-bottom: 20px; font-weight: 900; }
-        p { color: #4a4a4a; line-height: 1.8; font-size: 16px; font-weight: 500; }
-        .highlight { font-size: 20px; font-weight: bold; background: linear-gradient(to right, #f857a6, #ff5858); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 15px; }
-        .petal { position: absolute; top: -20px; pointer-events: none; animation: fall linear infinite; }
-        @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.8; transform: scale(1.2); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        @keyframes openCard { 0% { opacity: 0; transform: scale(0.5) rotate(-10deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
-        @keyframes fall { 0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; } }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Nền chuyển màu hồng tím mộng mơ */
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #feada6, #f3adff);
+            background-size: 400% 400%;
+            animation: gradientBg 10s ease infinite;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        @keyframes gradientBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Thẻ nội dung phong cách kính mờ lung linh */
+        .card {
+            display: none;
+            width: 88%;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 25px 20px;
+            border-radius: 30px;
+            border: 3px solid #ffb6c1;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3), 0 0 20px rgba(255, 255, 255, 0.6);
+            text-align: center;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            position: relative;
+            z-index: 10;
+        }
+        .active { display: block; }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+        /* Chữ Neon đổi màu của Hello Kitty */
+        .neon-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff007f;
+            text-shadow: 0 0 8px #fff, 0 0 15px #ffb6c1;
+            margin-bottom: 15px;
+        }
+
+        /* Hình ảnh Hello Kitty và Ảnh bạn nữ */
+        .kitty-img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
+        }
+        .avatar-frame {
+            width: 130px; height: 130px;
+            margin: 10px auto 15px;
+            border-radius: 50%;
+            border: 4px dashed #ff4b8b;
+            padding: 5px;
+            animation: rotateBorder 8s linear infinite;
+        }
+        .avatar {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        @keyframes rotateBorder { to { transform: rotate(360deg); } }
+
+        /* Khung chứa lời chúc */
+        .text-box {
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff4b8b;
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 14.5px;
+            line-height: 1.5;
+            text-align: left;
+            border: 1px solid #ffb6c1;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* Nút bấm Hello Kitty dễ thương */
+        .btn-kitty {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white; border: none;
+            padding: 12px 25px; font-size: 15px; font-weight: bold;
+            border-radius: 20px; cursor: pointer;
+            box-shadow: 0 5px 10px rgba(255, 20, 147, 0.3);
+            transition: 0.2s;
+        }
+        .btn-kitty:active { transform: scale(0.92); }
+
+        /* Tim và nơ bay lơ lửng xung quanh */
+        .falling-item {
+            position: absolute; pointer-events: none;
+            animation: fall linear infinite; z-index: 1;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
-    <script>
-        for (let i = 0; i < 30; i++) {
-            let sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.width = sparkle.style.height = Math.random() * 5 + 3 + 'px';
-            sparkle.style.top = Math.random() * 100 + 'vh';
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(sparkle);
-        }
-    </script>
-    <div class="gift-box-wrapper" id="giftSection" onclick="revealLove()">
-        <div class="gift-box">🎁✨</div>
-        <div class="click-text">Chạm để mở bất ngờ ẩn giấu! 💕</div>
+
+    <!-- TRANG 1: LỜI MỜI CỦA HELLO KITTY -->
+    <div class="card active" id="p1">
+        <img class="kitty-img" src="https://postimg.co" alt="Hello Kitty Chào">
+        <h1 class="neon-title">Cậu có tin nhắn mới! 💌</h1>
+        <p style="color: #555; font-size: 15px; margin-bottom: 15px;">Có một món quà siêu cấp ngọt ngào nhân ngày 20/10 đang chờ cậu khám phá đó!</p>
+        <button class="btn-kitty" onclick="goToPage(2)">Bật hộp quà nha 🎁</button>
     </div>
-    <div class="envelope" id="cardSection">
-        <h1>Happy Women's Day! 🌸</h1>
-        <!-- LỜI CHÚC DÀNH CHO BẠN NỮ: Bạn có thể sửa câu chữ ở dưới này nếu muốn -->
-        <p>Chúc cậu ngày 20/10 thật nhiều niềm vui, luôn xinh đẹp rạng rỡ và có được những điều ngọt ngào nhất. Cảm ơn cậu vì đã luôn mang lại năng lượng tích cực mỗi khi xuất hiện! 💖</p>
-        <div class="highlight">Ngày 20/10 vui vẻ nhé! 🌹✨</div>
+
+    <!-- TRANG 2: BÙNG NỔ HÌNH ẢNH CỦA CÔ ẤY -->
+    <div class="card" id="p2">
+        <img class="kitty-img" src="https://postimg.co" alt="Kitty Tim">
+        <h1 class="neon-title">Xinh Đẹp Tuyệt Trần! ✨</h1>
+        <div class="avatar-frame">
+            <!-- Thay link ảnh của bạn nữ vào đây nếu muốn nha -->
+            <img class="avatar" src="https://picsum.photos" alt="Crush">
+        </div>
+        <p style="color: #444; font-size: 15px; margin-bottom: 15px; font-weight: 500;">Hello Kitty nói rằng cậu chính là cô bé dễ thương nhất hôm nay!</p>
+        <button class="btn-kitty" onclick="goToPage(3)">Xem điều ước số 1 🌟</button>
     </div>
+
+    <!-- TRANG 3: ĐIỀU ƯỚC 1 -->
+    <div class="card" id="p3">
+        <img class="kitty-img" src="https://postimg.co" alt="Kitty Nhảy">
+        <h1 class="neon-title">Điều Ước Thứ Nhất 🌸</h1>
+        <div class="text-box">
+            💝 Chúc cậu ngày 20/10 ngập tràn niềm vui, ôm trọn thật nhiều hoa và những món quà siêu lãng mạn nhé! Lúc nào cũng phải cười thật tươi như thế này nha!
+        </div>
+        <button class="btn-kitty" onclick="goToPage(4)">Xem tiếp điều số 2 💕</button>
+    </div>
+
+    <!-- TRANG 4: ĐIỀU ƯỚC 2 -->
+    <div class="card" id="p4">
+        <img class="kitty-img" src="https://postimg.co" alt="Kitty Love">
+        <h1 class="neon-title">Điều Ước Thứ Hai 🎀</h1>
+        <div class="text-box">
+            🌟 Mong cho mọi dự định và ước mơ của cậu đều sớm trở thành hiện thực. Hãy luôn tự tin, tỏa sáng và hạnh phúc theo cách mà cậu muốn nhé!
+        </div>
+        <button class="btn-kitty" onclick="goToPage(5)">Trang cuối cùng nè 👑</button>
+    </div>
+
+    <!-- TRANG 5: LỜI KẾT NGỌT NGÀO -->
+    <div class="card" id="p5">
+        <img class="kitty-img" src="https://postimg.co" alt="Kitty Ôm">
+        <h1 class="neon-title">Happy 20/10! 🎉</h1>
+        <p style="color: #ff007f; font-weight: bold; font-size: 16px; margin-bottom: 15px;">Mãi luôn đáng yêu và rạng ngời như vậy nhé!</p>
+        <button class="btn-kitty" onclick="goToPage(1)">Quay lại trang đầu 🔄</button>
+    </div>
+
     <script>
-        function revealLove() {
-            document.getElementById('giftSection').style.display = 'none';
-            document.getElementById('cardSection').style.display = 'block';
-            setInterval(createPetal, 150);
+        // Hàm chuyển giữa các trang (Tổng cộng 5 trang)
+        function goToPage(pageNum) {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.getElementById('p' + pageNum).classList.add('active');
         }
-        function createPetal() {
-            const items = ['🌸', '✨', '❤️', '🌹', '💕'];
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.innerHTML = items[Math.floor(Math.random() * items.length)];
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.fontSize = Math.random() * 20 + 15 + 'px';
-            petal.style.animationDuration = Math.random() * 3 + 3 + 's';
-            document.body.appendChild(petal);
-            setTimeout(() => { petal.remove(); }, 6000);
-        }
+
+        // Hiệu ứng rơi biểu tượng động (Tim, Nơ hồng, Ngôi sao)
+        setInterval(() => {
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+            const icons = ['❤️', '💖', '🎀', '🌸', '✨', '💝'];
+            item.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = Math.random() * 3 + 2 + 's';
+            item.style.fontSize = Math.random() * 12 + 18 + 'px';
+            document.body.appendChild(item);
+            setTimeout(() => { item.remove(); }, 5000);
+        }, 200);
     </script>
 </body>
 </html>
