@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Tặng Người Tuyệt Vời Nhất ✨</title>
+    <style>
+        body { margin: 0; padding: 0; background: linear-gradient(135deg, #ffe5ec 0%, #ffb3c6 50%, #ff85a2 100%); height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; user-select: none; position: relative; }
+        .sparkle { position: absolute; background: white; border-radius: 50%; animation: twinkle 2s infinite ease-in-out; pointer-events: none; }
+        .gift-box-wrapper { text-align: center; cursor: pointer; z-index: 10; animation: float 2s infinite ease-in-out; }
+        .gift-box { font-size: 110px; filter: drop-shadow(0 10px 15px rgba(255, 71, 87, 0.4)); transition: transform 0.3s; }
+        .gift-box-wrapper:hover .gift-box { transform: scale(1.15) rotate(5deg); }
+        .click-text { color: #fff; font-weight: bold; font-size: 18px; text-shadow: 0 2px 5px rgba(0,0,0,0.2); background: rgba(255, 75, 110, 0.6); padding: 8px 18px; border-radius: 20px; margin-top: 15px; display: inline-block; }
+        .envelope { display: none; background: linear-gradient(145deg, #ffffff, #fff0f3); padding: 35px 25px; border-radius: 25px; border: 3px solid #ffd700; box-shadow: 0 20px 40px rgba(255, 75, 110, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.2); text-align: center; max-width: 350px; width: 80%; animation: openCard 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; z-index: 10; }
+        h1 { background: linear-gradient(to right, #ff416c, #ff4b2b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 26px; margin-bottom: 20px; font-weight: 900; }
+        p { color: #4a4a4a; line-height: 1.8; font-size: 16px; font-weight: 500; }
+        .highlight { font-size: 20px; font-weight: bold; background: linear-gradient(to right, #f857a6, #ff5858); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 15px; }
+        .petal { position: absolute; top: -20px; pointer-events: none; animation: fall linear infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(0.5); } 50% { opacity: 0.8; transform: scale(1.2); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes openCard { 0% { opacity: 0; transform: scale(0.5) rotate(-10deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
+        @keyframes fall { 0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+    <script>
+        for (let i = 0; i < 30; i++) {
+            let sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.width = sparkle.style.height = Math.random() * 5 + 3 + 'px';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(sparkle);
+        }
+    </script>
+    <div class="gift-box-wrapper" id="giftSection" onclick="revealLove()">
+        <div class="gift-box">🎁✨</div>
+        <div class="click-text">Chạm để mở bất ngờ ẩn giấu! 💕</div>
+    </div>
+    <div class="envelope" id="cardSection">
+        <h1>Happy Women's Day! 🌸</h1>
+        <!-- LỜI CHÚC DÀNH CHO BẠN NỮ: Bạn có thể sửa câu chữ ở dưới này nếu muốn -->
+        <p>Chúc cậu ngày 20/10 thật nhiều niềm vui, luôn xinh đẹp rạng rỡ và có được những điều ngọt ngào nhất. Cảm ơn cậu vì đã luôn mang lại năng lượng tích cực mỗi khi xuất hiện! 💖</p>
+        <div class="highlight">Ngày 20/10 vui vẻ nhé! 🌹✨</div>
+    </div>
+    <script>
+        function revealLove() {
+            document.getElementById('giftSection').style.display = 'none';
+            document.getElementById('cardSection').style.display = 'block';
+            setInterval(createPetal, 150);
+        }
+        function createPetal() {
+            const items = ['🌸', '✨', '❤️', '🌹', '💕'];
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.innerHTML = items[Math.floor(Math.random() * items.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = Math.random() * 20 + 15 + 'px';
+            petal.style.animationDuration = Math.random() * 3 + 3 + 's';
+            document.body.appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 6000);
+        }
+    </script>
+</body>
+</html>
