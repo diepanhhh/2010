@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quà tặng Diệp Anh 20/10</title>
     <style>
-        /* Nền hồng gradient ngọt ngào */
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +18,7 @@
             position: relative;
         }
 
-        /* Hộp thoại chính đổ bóng mờ mịn */
+        /* Hộp thoại chính */
         .card {
             background: rgba(255, 255, 255, 0.9);
             border: 2px solid #FFB6C1;
@@ -31,11 +30,8 @@
             box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
             backdrop-filter: blur(10px);
             z-index: 10;
-            position: relative;
-            animation: containerAppear 0.8s ease-out;
         }
 
-        /* Khung chứa nhân vật hoạt hình chính ở giữa */
         .image-container {
             width: 130px;
             height: 130px;
@@ -43,18 +39,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
-        /* Nhân vật chính nhảy nhót trên hộp quà */
+        /* Chú gấu trung tâm nhún nhảy */
         .main-char {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            font-size: 70px;
             animation: bounce 2s infinite ease-in-out;
+            user-select: none;
         }
 
-        /* Tiêu đề gọi tên Diệp Anh */
         .title {
             color: #D81B60;
             font-size: 24px;
@@ -62,7 +55,6 @@
             margin-bottom: 12px;
         }
 
-        /* Đoạn văn miêu tả */
         .description {
             color: #555;
             font-size: 14.5px;
@@ -70,7 +62,6 @@
             margin-bottom: 24px;
         }
 
-        /* Nút bấm màu hồng đậm của bạn */
         .btn {
             background: linear-gradient(90deg, #FF4081, #EC407A);
             color: white;
@@ -82,97 +73,114 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(236, 64, 122, 0.4);
             transition: all 0.3s ease;
-            display: inline-flex;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        /* --- HỘP THƯ ẨN TỰ CHẾ (MODAL POPUP) --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.6);
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        /* --- CÁC NHÂN VẬT HOẠT HÌNH TRANG TRÍ XUNG QUANH --- */
+        .popup-content {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 20px;
+            width: 85%;
+            max-width: 320px;
+            text-align: center;
+            border: 3px dashed #FF69B4;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: scale(0.7);
+            transition: all 0.4s ease;
+        }
+
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-text {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .close-btn {
+            background: #FF69B4;
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Các nhân vật hoạt hình trang trí góc màn hình */
         .character {
             position: absolute;
             z-index: 5;
-            pointer-events: none;
+            font-size: 55px;
             user-select: none;
+            pointer-events: none;
         }
+        
+        .bunny { bottom: 30px; left: 30px; animation: float 3s infinite ease-in-out; }
+        .cat { bottom: 30px; right: 30px; animation: float 3.5s infinite ease-in-out; }
+        .unicorn { top: 40px; left: 40px; animation: float 4s infinite ease-in-out; }
 
-        /* Bé Melody ở góc dưới bên trái */
-        .melody {
-            width: 90px;
-            bottom: 20px;
-            left: 20px;
-            animation: float 3s infinite ease-in-out;
-        }
-
-        /* Bé Kuromi ở góc dưới bên phải */
-        .kuromi {
-            width: 85px;
-            bottom: 20px;
-            right: 20px;
-            animation: float 3.5s infinite ease-in-out;
-        }
-
-        /* Bé Cinnamoroll bay ở trên đầu */
-        .cinna {
-            width: 90px;
-            top: 40px;
-            left: 15%;
-            animation: sway 4s infinite ease-in-out;
-        }
-
-        /* Hiệu ứng hạt tim/hoa rơi */
         .heart {
             position: absolute;
             font-size: 14px;
             color: #FF69B4;
-            pointer-events: none;
             animation: fall linear forwards;
-            opacity: 0.8;
             z-index: 1;
         }
 
-        /* --- HIỆU ỨNG CHUYỂN ĐỘNG (ANIMATIONS) --- */
+        /* --- HIỆU ỨNG CHUYỂN ĐỘNG --- */
         @keyframes fall {
             0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
-
         @keyframes bounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-
-        @keyframes containerAppear {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Các nhân vật hoạt hình trang trí nền ngoài bập bênh dễ thương -->
-    <img class="character melody" src="https://iconify.design" alt="Melody"> 
-    <img class="character kuromi" src="https://iconify.design" alt="Kuromi">
-    <img class="character cinna" src="https://iconify.design" alt="Cinnamoroll">
+    <!-- Các nhân vật hoạt hình dễ thương trang trí xung quanh -->
+    <div class="character bunny">🐰</div> 
+    <div class="character cat">🐱</div>
+    <div class="character unicorn">🦄</div>
 
     <div class="card">
         <div class="image-container">
-            <!-- Gấu ôm tim hoạt hình động ở trung tâm tấm thiệp -->
-            <img class="main-char" src="https://iconify.design" alt="Bear">
+            <div class="main-char">🧸</div>
         </div>
         <div class="title">Diệp Anh có tin nhắn mới! 💌</div>
         <div class="description">
@@ -183,15 +191,29 @@
         </button>
     </div>
 
+    <!-- KHUNG HỘP THƯ ẨN TỰ CHẾ -->
+    <div class="popup-overlay" id="giftPopup">
+        <div class="popup-content">
+            <div style="font-size: 40px; margin-bottom: 10px;">🌸✨</div>
+            <div class="popup-text">Chúc Diệp Anh một ngày 20/10 thật vui vẻ, luôn xinh đẹp, ngập tràn niềm vui và hạnh phúc nhé! 
+
+            Chúc cậu luôn cười tươi như những bông hoa hôm nay! ❤️</div>
+            <button class="close-btn" onclick="closeGift()">Đóng lại nhận quà 💝</button>
+        </div>
+    </div>
+
     <script>
-        // Lời chúc khi nhấn nút công tắc bật quà
         function openGift() {
-            alert("Chúc Diệp Anh một ngày 20/10 thật vui vẻ, luôn xinh đẹp, ngập tràn niềm vui và hạnh phúc nhé! 🌸✨ Chúc cậu luôn cười tươi như những bông hoa hôm nay!");
+            document.getElementById('giftPopup').classList.add('active');
         }
 
-        // Hiệu ứng hoa rơi rực rỡ
+        function closeGift() {
+            document.getElementById('giftPopup').classList.remove('active');
+        }
+
+        /* Hiệu ứng hoa cherry và trái tim rơi */
         function createHeart() {
-            const symbols = ['🌸', '💖', '✨', '❤️', '💕', '🧸'];
+            const symbols = ['🌸', '💖', '✨', '❤️', '💕'];
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
@@ -199,12 +221,8 @@
             heart.style.animationDuration = Math.random() * 3 + 2 + "s";
             heart.style.fontSize = Math.random() * 15 + 10 + "px";
             document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+            setTimeout(() => { heart.remove(); }, 5000);
         }
-
         setInterval(createHeart, 250);
     </script>
 </body>
