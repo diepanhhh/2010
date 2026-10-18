@@ -3,183 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quà 20/10 Đặc Biệt 🌸</title>
+    <title>Quà tặng Diệp Anh 20/10</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        /* Nền chuyển màu hồng tím mộng mơ */
+        /* Nền hồng gradient ngọt ngào */
         body {
-            background: linear-gradient(135deg, #ff9a9e, #fecfef, #feada6, #f3adff);
-            background-size: 400% 400%;
-            animation: gradientBg 10s ease infinite;
-            overflow: hidden;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-        @keyframes gradientBg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Thẻ nội dung phong cách kính mờ lung linh */
-        .card {
-            display: none;
-            width: 88%;
-            max-width: 380px;
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 25px 20px;
-            border-radius: 30px;
-            border: 3px solid #ffb6c1;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3), 0 0 20px rgba(255, 255, 255, 0.6);
-            text-align: center;
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #FFDEE9 0%, #B5FFFC 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
             position: relative;
-            z-index: 10;
         }
-        .active { display: block; }
-        @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-        /* Chữ Neon đổi màu của Hello Kitty */
-        .neon-title {
+        /* Hộp thoại chính đổ bóng mờ mịn */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #FFB6C1;
+            border-radius: 24px;
+            padding: 35px 24px;
+            width: 90%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            position: relative;
+            animation: containerAppear 0.8s ease-out;
+        }
+
+        /* Khung chứa nhân vật hoạt hình chính ở giữa */
+        .image-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Nhân vật chính nhảy nhót trên hộp quà */
+        .main-char {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        /* Tiêu đề gọi tên Diệp Anh */
+        .title {
+            color: #D81B60;
             font-size: 24px;
             font-weight: bold;
-            color: #ff007f;
-            text-shadow: 0 0 8px #fff, 0 0 15px #ffb6c1;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        /* Hình ảnh Hello Kitty và Ảnh bạn nữ */
-        .kitty-img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 5px 10px rgba(255,105,180,0.5));
-        }
-        .avatar-frame {
-            width: 130px; height: 130px;
-            margin: 10px auto 15px;
-            border-radius: 50%;
-            border: 4px dashed #ff4b8b;
-            padding: 5px;
-            animation: rotateBorder 8s linear infinite;
-        }
-        .avatar {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        @keyframes rotateBorder { to { transform: rotate(360deg); } }
-
-        /* Khung chứa lời chúc */
-        .text-box {
-            background: rgba(255, 255, 255, 0.9);
-            color: #ff4b8b;
-            padding: 12px;
-            border-radius: 15px;
+        /* Đoạn văn miêu tả */
+        .description {
+            color: #555;
             font-size: 14.5px;
-            line-height: 1.5;
-            text-align: left;
-            border: 1px solid #ffb6c1;
-            margin-bottom: 15px;
-            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
-        /* Nút bấm Hello Kitty dễ thương */
-        .btn-kitty {
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            color: white; border: none;
-            padding: 12px 25px; font-size: 15px; font-weight: bold;
-            border-radius: 20px; cursor: pointer;
-            box-shadow: 0 5px 10px rgba(255, 20, 147, 0.3);
-            transition: 0.2s;
+        /* Nút bấm màu hồng đậm của bạn */
+        .btn {
+            background: linear-gradient(90deg, #FF4081, #EC407A);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(236, 64, 122, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        .btn-kitty:active { transform: scale(0.92); }
 
-        /* Tim và nơ bay lơ lửng xung quanh */
-        .falling-item {
-            position: absolute; pointer-events: none;
-            animation: fall linear infinite; z-index: 1;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.6);
         }
+
+        /* --- CÁC NHÂN VẬT HOẠT HÌNH TRANG TRÍ XUNG QUANH --- */
+        .character {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Bé Melody ở góc dưới bên trái */
+        .melody {
+            width: 90px;
+            bottom: 20px;
+            left: 20px;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        /* Bé Kuromi ở góc dưới bên phải */
+        .kuromi {
+            width: 85px;
+            bottom: 20px;
+            right: 20px;
+            animation: float 3.5s infinite ease-in-out;
+        }
+
+        /* Bé Cinnamoroll bay ở trên đầu */
+        .cinna {
+            width: 90px;
+            top: 40px;
+            left: 15%;
+            animation: sway 4s infinite ease-in-out;
+        }
+
+        /* Hiệu ứng hạt tim/hoa rơi */
+        .heart {
+            position: absolute;
+            font-size: 14px;
+            color: #FF69B4;
+            pointer-events: none;
+            animation: fall linear forwards;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        /* --- HIỆU ỨNG CHUYỂN ĐỘNG (ANIMATIONS) --- */
         @keyframes fall {
             0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes containerAppear {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TRANG 1: LỜI MỜI CỦA HELLO KITTY -->
-    <div class="card active" id="p1">
-        <img class="kitty-img" src="https://postimg.co" alt="Hello Kitty Chào">
-        <h1 class="neon-title">Cậu có tin nhắn mới! 💌</h1>
-        <p style="color: #555; font-size: 15px; margin-bottom: 15px;">Có một món quà siêu cấp ngọt ngào nhân ngày 20/10 đang chờ cậu khám phá đó!</p>
-        <button class="btn-kitty" onclick="goToPage(2)">Bật hộp quà nha 🎁</button>
-    </div>
+    <!-- Các nhân vật hoạt hình trang trí nền ngoài bập bênh dễ thương -->
+    <img class="character melody" src="https://iconify.design" alt="Melody"> 
+    <img class="character kuromi" src="https://iconify.design" alt="Kuromi">
+    <img class="character cinna" src="https://iconify.design" alt="Cinnamoroll">
 
-    <!-- TRANG 2: BÙNG NỔ HÌNH ẢNH CỦA CÔ ẤY -->
-    <div class="card" id="p2">
-        <img class="kitty-img" src="https://postimg.co" alt="Kitty Tim">
-        <h1 class="neon-title">Xinh Đẹp Tuyệt Trần! ✨</h1>
-        <div class="avatar-frame">
-            <!-- Thay link ảnh của bạn nữ vào đây nếu muốn nha -->
-            <img class="avatar" src="https://picsum.photos" alt="Crush">
+    <div class="card">
+        <div class="image-container">
+            <!-- Gấu ôm tim hoạt hình động ở trung tâm tấm thiệp -->
+            <img class="main-char" src="https://iconify.design" alt="Bear">
         </div>
-        <p style="color: #444; font-size: 15px; margin-bottom: 15px; font-weight: 500;">Hello Kitty nói rằng cậu chính là cô bé dễ thương nhất hôm nay!</p>
-        <button class="btn-kitty" onclick="goToPage(3)">Xem điều ước số 1 🌟</button>
-    </div>
-
-    <!-- TRANG 3: ĐIỀU ƯỚC 1 -->
-    <div class="card" id="p3">
-        <img class="kitty-img" src="https://postimg.co" alt="Kitty Nhảy">
-        <h1 class="neon-title">Điều Ước Thứ Nhất 🌸</h1>
-        <div class="text-box">
-            💝 Chúc cậu ngày 20/10 ngập tràn niềm vui, ôm trọn thật nhiều hoa và những món quà siêu lãng mạn nhé! Lúc nào cũng phải cười thật tươi như thế này nha!
+        <div class="title">Diệp Anh có tin nhắn mới! 💌</div>
+        <div class="description">
+            Có một món quà siêu cấp ngọt ngào nhân ngày 20/10 đang chờ Diệp Anh khám phá đó!
         </div>
-        <button class="btn-kitty" onclick="goToPage(4)">Xem tiếp điều số 2 💕</button>
-    </div>
-
-    <!-- TRANG 4: ĐIỀU ƯỚC 2 -->
-    <div class="card" id="p4">
-        <img class="kitty-img" src="https://postimg.co" alt="Kitty Love">
-        <h1 class="neon-title">Điều Ước Thứ Hai 🎀</h1>
-        <div class="text-box">
-            🌟 Mong cho mọi dự định và ước mơ của cậu đều sớm trở thành hiện thực. Hãy luôn tự tin, tỏa sáng và hạnh phúc theo cách mà cậu muốn nhé!
-        </div>
-        <button class="btn-kitty" onclick="goToPage(5)">Trang cuối cùng nè 👑</button>
-    </div>
-
-    <!-- TRANG 5: LỜI KẾT NGỌT NGÀO -->
-    <div class="card" id="p5">
-        <img class="kitty-img" src="https://postimg.co" alt="Kitty Ôm">
-        <h1 class="neon-title">Happy 20/10! 🎉</h1>
-        <p style="color: #ff007f; font-weight: bold; font-size: 16px; margin-bottom: 15px;">Mãi luôn đáng yêu và rạng ngời như vậy nhé!</p>
-        <button class="btn-kitty" onclick="goToPage(1)">Quay lại trang đầu 🔄</button>
+        <button class="btn" onclick="openGift()">
+            Bật hộp quà nha 🎁
+        </button>
     </div>
 
     <script>
-        // Hàm chuyển giữa các trang (Tổng cộng 5 trang)
-        function goToPage(pageNum) {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-            document.getElementById('p' + pageNum).classList.add('active');
+        // Lời chúc khi nhấn nút công tắc bật quà
+        function openGift() {
+            alert("Chúc Diệp Anh một ngày 20/10 thật vui vẻ, luôn xinh đẹp, ngập tràn niềm vui và hạnh phúc nhé! 🌸✨ Chúc cậu luôn cười tươi như những bông hoa hôm nay!");
         }
 
-        // Hiệu ứng rơi biểu tượng động (Tim, Nơ hồng, Ngôi sao)
-        setInterval(() => {
-            const item = document.createElement('div');
-            item.classList.add('falling-item');
-            const icons = ['❤️', '💖', '🎀', '🌸', '✨', '💝'];
-            item.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.animationDuration = Math.random() * 3 + 2 + 's';
-            item.style.fontSize = Math.random() * 12 + 18 + 'px';
-            document.body.appendChild(item);
-            setTimeout(() => { item.remove(); }, 5000);
-        }, 200);
+        // Hiệu ứng hoa rơi rực rỡ
+        function createHeart() {
+            const symbols = ['🌸', '💖', '✨', '❤️', '💕', '🧸'];
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.style.fontSize = Math.random() * 15 + 10 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 250);
     </script>
 </body>
 </html>
